@@ -22,19 +22,34 @@
     <button>Copiar senha</button>
 
     <script>
+
+        let passwordLength = 16
+
         function generatePassword(){
             const chars = 
             "abcdefghijklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
 
             let password = ""
 
-            for (let i = 0; i < 8; i++){
+            for (let i = 0; i < passwordLength; i++){
                 const randonNumber = Math.floor(Math.random()*chars.length)
                 password += chars.substring(randonNumber, randonNumber + 1)
             }
 
-            console.log(password)
+            const inputEl = document.querySelector("#password")
+            inputEl.value = password
+
+
+
+            
         }
+
+        const passwordLengthEl = document.querySelector("#password-length")
+        passwordLengthEl.addEventListener("input", function(){
+            passwordLength = passwordLengthEl.value
+            generatePassword()
+        })
+
 
         generatePassword()
 
