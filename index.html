@@ -4,14 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Gerador de senha</h1>
-    <p>Utilize o nosso gerador online para criar uma senha forte e segura.</p>
+    <main>
+        <section class="hero">
+            <h1 class="title">Gerador de senha</h1>
+            <p class="subtitle">Utilize o nosso gerador online para criar uma senha forte e segura.</p>
+        </section>
 
-    <input type="text" name="password" id="password">
+        <section class="box">
+            <div class="password">
+                <div class="text">
+                    <input type="text" name="password" id="password">
+                </div>
+                <div class="actions">
+                    <button id="copy-1">
+                        <img src="copy.svg" width="42">
+                    </button>
+                    <button id="renew">
+                        <img src="renew.svg" width="42">
+                    </button>
+                </div>
+            </div>
+            <div class="security-indicator">
+                <div id="security-indicator-bar" class="bar safe" style="width: 90%"></div>
+            </div>
+        </section>
+    
+
+    
 
     <input 
         type="range" 
@@ -21,8 +47,9 @@
         min="4"
         max="64" />
 
-    <button id="copy">Copiar senha</button>
+    <button id="copy-2">Copiar senha</button>
 
+    </main>
     <script>
         const inputEl = document.querySelector("#password")
         let passwordLength = 16
@@ -51,8 +78,8 @@
             generatePassword()
         })
 
-        const copyButtonEl = document.querySelector("#password-length")
-        copyButtonEl.addEventListener("click", copy)
+        document.querySelector("#copy-1").addEventListener("click", copy)
+        document.querySelector("#copy-2").addEventListener("click", copy)
 
         generatePassword()
     </script>
