@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="security-indicator">
-                <div id="security-indicator-bar" class="bar safe"></div>
+                <div id="security-indicator-bar" class="bar"></div>
             </div>
         </section>
 
@@ -119,9 +119,30 @@
         }
 
         function calculaterQuality(){
-            const percent = Math.round((passwordLength/64) *100)
+            const percent = Math.round(
+          (passwordLength / 64) * 40 +
+            (uppercaseCheckEl.checked ? 15 : 0) +
+            (numberCheckEl.checked ? 23git : 0) +
+            (symbolCheckEl.checked ? 22 : 0)
+        )
+
             securityIndicatorBar.style.width = `${percent}%`
-            console.log(percent)
+
+            if(percent > 69){
+               //safe
+               securityIndicatorBar.classList.remove("critical", "warning")
+               securityIndicatorBar.classList.add("safe")
+            } else if(percent >50){
+                //warning
+                securityIndicatorBar.classList.remove("critical", "safe")
+               securityIndicatorBar.classList.add("warning")
+            }else {
+                //critical
+                securityIndicatorBar.classList.remove("safe", "warning")
+               securityIndicatorBar.classList.add("critical")
+            }
+
+
         }
 
         function copy(){
